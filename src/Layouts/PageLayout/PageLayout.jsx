@@ -24,8 +24,6 @@ const PageLayout = ({ children }) => {
           <Sidebar />
         </Box>
       ) : null}
-      {/* Navbar */}
-      {/* {canRenderNavbar ? <HeroSection /> : null} */}
       {/* Page content on the left*/}
       <Box
         flex={1}

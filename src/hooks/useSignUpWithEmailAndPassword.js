@@ -41,8 +41,6 @@ const useSignUpWithEmailAndPassword = () => {
                     fullName:inputs.fullName,
                     bio:"",
                     profilePicURL:"",
-                    followers:[],
-                    following:[],
                     posts:[],
                     createdAt:Date.now(),
                 }

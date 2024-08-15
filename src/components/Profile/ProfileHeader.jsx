@@ -10,16 +10,16 @@ import {
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import EditProfile from "./EditProfile";
-import useFollowUser from "../../hooks/useFollowUser";
+//import useFollowUser from "../../hooks/useFollowUser";
 
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   const authUser = useAuthStore((state) => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid)
+  //const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid)
 
   const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
-	const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
+	//const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
 
   return (
     <Flex
@@ -63,7 +63,7 @@ const ProfileHeader = () => {
 							</Button>
 						</Flex>
 					)}
-					{visitingAnotherProfileAndAuth && (
+					{/* {visitingAnotherProfileAndAuth && (
 						<Flex gap={4} alignItems={"center"} justifyContent={"center"}>
 							<Button
 								bg={"blue.500"}
@@ -76,7 +76,7 @@ const ProfileHeader = () => {
 								{isFollowing ? "Unfollow" : "Follow"}
 							</Button>
 						</Flex>
-					)}
+					)} */}
         </Flex>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: "xs", md: "sm" }}>

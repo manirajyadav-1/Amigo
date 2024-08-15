@@ -28,9 +28,11 @@ const FeedPosts = () => {
 
   useEffect(() => {
     setFilteredPosts(posts.filter(post => authUser.uid !== post.createdBy));
-  }, [posts, authUser.uid]);
+  }, [posts, authUser]);
 
   const handleSearch = () => {
+    if (!authUser) return;
+
     const newFilteredPosts = posts.filter((post) => {
       if (authUser.uid === post.createdBy) return false;
       if (formData.location && post.location !== formData.location) return false;
