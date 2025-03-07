@@ -22,7 +22,7 @@ const Sidebar = () => {
 				<Link to={"/"} as={RouterLink} pl={2} display={{ base: "none", md: "block" }} cursor='pointer' _hover={{ textDecoration: "none" }} fontSize={"20px"} fontWeight={"bold"}>
 					<Flex gap={"5px"}>
 						<FaHome size={25}/>
-						Roomie
+						Amigo
 					</Flex>
 				</Link>
 				<Link

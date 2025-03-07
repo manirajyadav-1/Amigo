@@ -8,6 +8,8 @@ import {
   SkeletonCircle,
   Text,
   VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import FeedPost from "./FeedPost";
@@ -41,7 +43,7 @@ const FeedPosts = () => {
       return true;
     });
     setFilteredPosts(newFilteredPosts);
-    setFormData({location:"",preference:"",price:""})
+    setFormData({ location: "", preference: "", price: "" });
   };
 
   const handleChange = (e) => {
@@ -50,16 +52,10 @@ const FeedPosts = () => {
   };
 
   return (
-    <Container maxW={"container.2xl"} py={12}>
-      <Flex borderRadius={8} gap={0.5} justifyContent={"center"} alignItems={"center"}>
-        <Select
-          placeholder="Location"
-          h={{base:"none", md:"60px"}}
-          w={{base:"xsm", md:"220px"}}
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-        >
+    <Container maxW="container.xl" py={10}>
+      {/* Filters */}
+      <Flex borderRadius={8} gap={2} justifyContent="center" alignItems="center" wrap="wrap">
+        <Select placeholder="Location" h="50px" w={{ base: "full", md: "220px" }} name="location" value={formData.location} onChange={handleChange}>
           <option value="Koramangala">Koramangala</option>
           <option value="Jayanagar">Jayanagar</option>
           <option value="Lalbagh">Lalbagh</option>
@@ -69,14 +65,8 @@ const FeedPosts = () => {
           <option value="Yesvanthpur">Yesvanthpur</option>
           <option value="Indiranagar">Indiranagar</option>
         </Select>
-        <Select
-          placeholder="Preference"
-          h={{base:"none", md:"60px"}}
-          w={{base:"xsm", md:"220px"}}
-          name="preference"
-          value={formData.preference}
-          onChange={handleChange}
-        >
+
+        <Select placeholder="Preference" h="50px" w={{ base: "full", md: "220px" }} name="preference" value={formData.preference} onChange={handleChange}>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Professional">Professional</option>
@@ -86,47 +76,46 @@ const FeedPosts = () => {
           <option value="No Partying">No Partying</option>
           <option value="No Pets">No Pets</option>
         </Select>
-        <Select
-          placeholder="Price"
-          h={{base:"none", md:"60px"}}
-          w={{base:"xsm", md:"220px"}}
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-        >
+
+        <Select placeholder="Price" h="50px" w={{ base: "full", md: "220px" }} name="price" value={formData.price} onChange={handleChange}>
           <option value="₹5000-₹10000">₹5000-₹10000</option>
           <option value="₹10000-₹15000">₹10000-₹15000</option>
           <option value="₹15000-₹20000">₹15000-₹20000</option>
           <option value="₹20000-₹30000">₹20000-₹30000</option>
         </Select>
-        <Button bgColor={"blueviolet"} h={{base:"none", md:"60px"}}
-          w={{base:"xsm", md:"220px"}} onClick={handleSearch}>
+
+        <Button bgColor="blueviolet" color="white" h="50px" w={{ base: "full", md: "220px" }} onClick={handleSearch}>
           Search
         </Button>
       </Flex>
-      {isLoading &&
+
+      {/* Posts Grid */}
+      {isLoading ? (
         [0, 1, 2].map((_, idx) => (
-          <VStack key={idx} gap={4} alignItems={"flex-start"} mb={10}>
+          <Flex key={idx} gap={4} alignItems="flex-start" mb={10}>
             <Flex gap="2">
               <SkeletonCircle size="10" />
-              <VStack gap={2} alignItems={"flex-start"}>
-                <Skeleton height="10px" w={"200px"} />
-                <Skeleton height="10px" w={"200px"} />
+              <VStack gap={2} alignItems="flex-start">
+                <Skeleton height="10px" w="200px" />
+                <Skeleton height="10px" w="200px" />
               </VStack>
             </Flex>
-            <Skeleton w={"full"}>
-              <Box h={"400px"}>contents wrapped</Box>
+            <Skeleton w="full">
+              <Box h="400px">contents wrapped</Box>
             </Skeleton>
-          </VStack>
-        ))}
-
-      {!isLoading &&
-        filteredPosts.length > 0 &&
-        filteredPosts.map((post) => <FeedPost key={post.id} post={post} />)}
-
-      {!isLoading && filteredPosts.length === 0 && (
-        <Text fontSize={"md"} color={"red.400"} my={18}>
-          Dayuum. No any post found.
+          </Flex>
+        ))
+      ) : filteredPosts.length > 0 ? (
+        <Wrap spacing={6} justify="center" mt={6} align="stretch">
+          {filteredPosts.map((post) => (
+            <WrapItem key={post.id} w="300px">
+              <FeedPost post={post} />
+            </WrapItem>
+          ))}
+        </Wrap>
+      ) : (
+        <Text fontSize="md" color="red.400" my={18} textAlign="center">
+          No posts found.
         </Text>
       )}
     </Container>
