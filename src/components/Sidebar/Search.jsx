@@ -56,14 +56,14 @@ const Search = () => {
 
 			<Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft'>
 				<ModalOverlay />
-				<ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
+				<ModalContent bg={"gray.300"} border={"1px solid gray"} maxW={"500px"}>
 					<ModalHeader>Search user</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<form onSubmit={handleSearchUser}>
 							<FormControl>
 								<FormLabel>Username</FormLabel>
-								<Input placeholder='Search by username' ref={searchRef} />
+								<Input placeholder='Search by username' ref={searchRef} border={"1px solid gray"}/>
 							</FormControl>
 
 							<Flex w={"full"} justifyContent={"flex-end"}>

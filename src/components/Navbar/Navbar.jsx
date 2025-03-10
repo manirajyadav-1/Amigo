@@ -11,12 +11,12 @@ const Navbar = () => {
     <Container
       maxW={"container.xl"}
       borderBottom={"1px solid"}
-      borderColor={"whiteAlpha.300"}
+      borderColor={"black"}
       py={{ base: "0.5", md: "5" }}
       position={"fixed"}
       zIndex={1}
       overflow={"hidden"}
-      bgColor={"black"}
+      bgColor={"gray.200"}
     >
     </Container>
   );

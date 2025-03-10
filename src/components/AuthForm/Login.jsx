@@ -15,6 +15,7 @@ const Login = () => {
         placeholder="Email"
         fontSize={14}
         type="email"
+        border={"1px solid gray"}
         size={"sm"}
         value={inputs.email}
         onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
@@ -23,6 +24,7 @@ const Login = () => {
         placeholder="Password"
         fontSize={14}
         type="password"
+        border={"1px solid gray"}
         size={"sm"}
         value={inputs.password}
         onChange={(e) => setInputs({ ...inputs, password: e.target.value })}

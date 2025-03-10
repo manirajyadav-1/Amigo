@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import FeedPost from "./FeedPost";
 import useGetFeedPosts from "../../hooks/useGetFeedPosts";
 import useAuthStore from "../../store/authStore";
+import LocationDropdown from "../Sidebar/LocationDropdown";
 
 const FeedPosts = () => {
   const { isLoading, posts } = useGetFeedPosts();
@@ -55,18 +56,10 @@ const FeedPosts = () => {
     <Container maxW="container.xl" py={10}>
       {/* Filters */}
       <Flex borderRadius={8} gap={2} justifyContent="center" alignItems="center" wrap="wrap">
-        <Select placeholder="Location" h="50px" w={{ base: "full", md: "220px" }} name="location" value={formData.location} onChange={handleChange}>
-          <option value="Koramangala">Koramangala</option>
-          <option value="Jayanagar">Jayanagar</option>
-          <option value="Lalbagh">Lalbagh</option>
-          <option value="Electronic City">Electronic City</option>
-          <option value="Kaggalipura">Kaggalipura</option>
-          <option value="Whitefield">Whitefield</option>
-          <option value="Yesvanthpur">Yesvanthpur</option>
-          <option value="Indiranagar">Indiranagar</option>
-        </Select>
 
-        <Select placeholder="Preference" h="50px" w={{ base: "full", md: "220px" }} name="preference" value={formData.preference} onChange={handleChange}>
+        <LocationDropdown formValues={formData.location} handleChange={handleChange} />
+
+        <Select placeholder="Preference" h="50px" border="1px solid gray" w={{ base: "full", md: "220px" }} name="preference" value={formData.preference} onChange={handleChange}>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Professional">Professional</option>
@@ -77,14 +70,14 @@ const FeedPosts = () => {
           <option value="No Pets">No Pets</option>
         </Select>
 
-        <Select placeholder="Price" h="50px" w={{ base: "full", md: "220px" }} name="price" value={formData.price} onChange={handleChange}>
+        <Select placeholder="Price" h="50px" border="1px solid gray" w={{ base: "full", md: "220px" }} name="price" value={formData.price} onChange={handleChange}>
           <option value="₹5000-₹10000">₹5000-₹10000</option>
           <option value="₹10000-₹15000">₹10000-₹15000</option>
           <option value="₹15000-₹20000">₹15000-₹20000</option>
           <option value="₹20000-₹30000">₹20000-₹30000</option>
         </Select>
 
-        <Button bgColor="blueviolet" color="white" h="50px" w={{ base: "full", md: "220px" }} onClick={handleSearch}>
+        <Button bgColor="blue" color="white" h="50px" w={{ base: "full", md: "220px" }} onClick={handleSearch}>
           Search
         </Button>
       </Flex>

@@ -1,8 +1,8 @@
 export const SearchLogo = () => (
 	<svg
 		aria-label='Search'
-		color='rgb(245, 245, 245)'
-		fill='rgb(245, 245, 245)'
+		color='rgb(14, 12, 12)'
+		fill='rgb(2, 2, 2)'
 		height='24'
 		role='img'
 		viewBox='0 0 24 24'

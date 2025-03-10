@@ -40,6 +40,7 @@ import {
 } from "firebase/firestore";
 import { firestore, storage } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import LocationDropdown from "./LocationDropdown";
 
 const CreatePost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -109,7 +110,7 @@ const CreatePost = () => {
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
 
-        <ModalContent bg={"black"} border={"1px solid gray"}>
+        <ModalContent bg={"gray.300"} border={"1px solid gray"} maxW={"700px"}>
           <ModalHeader>Create Post</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6} columnGap={10}>
@@ -117,6 +118,7 @@ const CreatePost = () => {
               <Text>Title</Text>
               <Input
                 type="text"
+                border={"1px solid gray"}
                 placeholder="Try something like: Seeking Roommate or 2 bed room place."
                 name="title"
                 value={formValues.title}
@@ -132,6 +134,7 @@ const CreatePost = () => {
                   name="price"
                   value={formValues.price}
                   onChange={handleChange}
+                  border={"1px solid gray"}
                 >
                   <option value="₹5000-₹10000">₹5000-₹10000</option>
                   <option value="₹10000-₹15000">₹10000-₹15000</option>
@@ -141,21 +144,7 @@ const CreatePost = () => {
               </Box>
               <Box>
                 <Text>Location</Text>
-                <Select
-                  placeholder="Select option"
-                  name="location"
-                  value={formValues.location}
-                  onChange={handleChange}
-                >
-                  <option value="Koramangala">Koramangala</option>
-                  <option value="Jayanagar">Jayanagar</option>
-                  <option value="Lalbagh">Lalbagh</option>
-                  <option value="Electronic City">Electronic City</option>
-                  <option value="Kaggalipura">Kaggalipura</option>
-                  <option value="Whitefield">Whitefield</option>
-                  <option value="Yesvanthpur">Yesvanthpur</option>
-                  <option value="Indiranagar">Indiranagar</option>
-                </Select>
+                <LocationDropdown formValues={formValues} handleChange={handleChange} />
               </Box>
             </Flex>
 
@@ -191,6 +180,7 @@ const CreatePost = () => {
                 name="description"
                 value={formValues.description}
                 onChange={handleChange}
+                border={"1px solid gray"}
               />
             </Box>
             <Input

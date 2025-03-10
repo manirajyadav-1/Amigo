@@ -38,15 +38,15 @@ const RequestModal = ({ isOpen, onClose, post }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInLeft">
       <ModalOverlay />
-      <ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
+      <ModalContent bg={"gray.300"} border={"1px solid gray"} maxW={"500px"}>
         <ModalHeader>Send Request</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <form onSubmit={handleSubmitRequest} style={{ marginTop: "2rem" }}>
             <Flex flexDirection={"column"} gap={4}>
-              <Input placeholder="Name" size={"md"} value={formData.name} onChange={(e) => setIsFormData({...formData, name: e.target.value})} required/>
-              <Input placeholder="Phone" size={"md"}  value={formData.phone} onChange={(e) => setIsFormData({...formData, phone: e.target.value})} required/>
-              <Textarea placeholder="Hello, I am intrested in..." size={"md"}  value={formData.description} onChange={(e) => setIsFormData({...formData, description: e.target.value})} required/>
+              <Input placeholder="Name" size={"md"} border={"1px solid gray"} value={formData.name} onChange={(e) => setIsFormData({...formData, name: e.target.value})} required/>
+              <Input placeholder="Phone" size={"md"} border={"1px solid gray"}  value={formData.phone} onChange={(e) => setIsFormData({...formData, phone: e.target.value})} required/>
+              <Textarea placeholder="Hello, I am intrested in..." size={"md"} border={"1px solid gray"}  value={formData.description} onChange={(e) => setIsFormData({...formData, description: e.target.value})} required/>
             </Flex>
             <Flex w={"full"} justifyContent={"flex-end"}>
               <Button

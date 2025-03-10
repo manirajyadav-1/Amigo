@@ -36,7 +36,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           <Button
             cursor={"pointer"}
             fontSize={18}
-            bgColor={"blueviolet"}
+            bgColor={"blue.400"}
             onClick={openDetailsModal}
           >
             View details
@@ -44,7 +44,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           <Button
             cursor={"pointer"}
             fontSize={18}
-            bgColor={"blueviolet"}
+            bgColor={"blue.400"}
             onClick={openRequestModal}
           >
             Send request

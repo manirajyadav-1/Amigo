@@ -25,7 +25,7 @@ const DetailsModel = ({ post, isOpen, onClose, creatorProfile }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalCloseButton />
-        <ModalBody bg={"black"} pb={5}>
+        <ModalBody bg={"gray.300"} pb={5}>
           <Flex alignItems={"center"} gap={4}>
             <Avatar
               src={creatorProfile.profilePicURL}
@@ -37,7 +37,7 @@ const DetailsModel = ({ post, isOpen, onClose, creatorProfile }) => {
             </Text>
             <Box color={"gray.500"}>• {timeAgo(post.createdAt)}</Box>
           </Flex>
-          <Divider my={4} bg={"gray.500"} />
+          <Divider my={4} bg={"black"} />
           <VStack alignItems={"center"} overflowY={"auto"}>
             <Image
               src={post.imageURL}
@@ -48,19 +48,19 @@ const DetailsModel = ({ post, isOpen, onClose, creatorProfile }) => {
             <Text fontSize="xl" fontWeight="bold">
               {post.title}
             </Text>
-            <Text fontSize="lg" color="gray.400">
+            <Text fontSize="lg" color="gray.700">
               📍{post.location}
             </Text>
             <Flex gap={2}>
-              <Text fontSize="lg" color="gray.400">
+              <Text fontSize="lg" color="gray.700">
                 Price:
               </Text>
-              <Text fontSize="lg" color="gray.400">
+              <Text fontSize="lg" color="gray.700">
                 {post.price}
               </Text>
             </Flex>
             <Flex gap={2}>
-              <Text fontSize="lg" color="gray.400">
+              <Text fontSize="lg" color="gray.700">
                 High Preferences:
               </Text>
               {post.preferences &&
@@ -68,8 +68,8 @@ const DetailsModel = ({ post, isOpen, onClose, creatorProfile }) => {
                   <Text
                     key={idx}
                     fontSize="lg"
-                    color="gray.800"
-                    backgroundColor={"whitesmoke"}
+                    color="gray.700"
+                    backgroundColor={"gray.400"}
                     borderRadius={2}
                   >
                     {item}
@@ -77,10 +77,10 @@ const DetailsModel = ({ post, isOpen, onClose, creatorProfile }) => {
                 ))}
             </Flex>
             <Flex gap={2}>
-              <Text fontSize="lg" color="gray.400">
+              <Text fontSize="lg" color="gray.700">
                 Description:
               </Text>
-              <Text fontSize="lg" color="gray.400">
+              <Text fontSize="lg" color="gray.700">
                 {post.description}
               </Text>
             </Flex>
