@@ -6,6 +6,7 @@ import ProfilePage from "./components/ProfilePage/ProfilePage"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "./firebase/firebase"
 import LandingPage from "./pages/LandingPage/LandingPage"
+import MapFinder from "./components/Sidebar/MapFinder"
 
 function App() {
   const [authUser] = useAuthState(auth);
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={authUser ? <HomePage/> : <LandingPage />}/>
         <Route path="/auth" element={!authUser ? <AuthPage/> : <Navigate to="/" />}/>
         <Route path="/:username" element={<ProfilePage />}/>
+        <Route path="/mapfinder" element={<MapFinder />}/>
       </Routes>
     </PageLayout>
   )
