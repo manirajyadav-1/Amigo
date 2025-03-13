@@ -31,13 +31,7 @@ import useAuthStore from "../../store/authStore";
 import usePostStore from "../../store/postStore";
 import useUserProfileStore from "../../store/userProfileStore";
 import { useLocation } from "react-router-dom";
-import {
-  addDoc,
-  arrayUnion,
-  collection,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { addDoc, arrayUnion, collection, doc, updateDoc } from "firebase/firestore";
 import { firestore, storage } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import LocationDropdown from "./LocationDropdown";
@@ -48,6 +42,8 @@ const CreatePost = () => {
     title: "",
     price: "",
     location: "",
+    lat: null,
+    lng: null,
     preferences: [],
     description: "",
   });
@@ -63,7 +59,7 @@ const CreatePost = () => {
       [name]: value,
     }));
   };
-
+  
   const handleCheckboxChange = (values) => {
     setFormValues((prevValues) => ({
       ...prevValues,
@@ -258,6 +254,11 @@ function useCreatePost() {
     };
 
     try {
+      // Convert location to coordinates
+      const coordinates = await handleLocationToCoordinates(formValues.location);
+      newPost.lat = coordinates.lat;
+      newPost.lon = coordinates.lon;
+
       const postDocRef = await addDoc(collection(firestore, "posts"), newPost);
       const userDocRef = doc(firestore, "users", authUser.uid);
       const imageRef = ref(storage, `posts/${postDocRef.id}`);
@@ -284,5 +285,28 @@ function useCreatePost() {
     }
   };
 
+   // Function to convert location name to coordinates
+   const handleLocationToCoordinates = async (location) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+          location
+        )}`
+      );
+      const data = await response.json();
+      if (data.length > 0) {
+        return { lat: data[0].lat, lon: data[0].lon };
+      }
+      return { lat: null, lon: null };
+    } catch (error) {
+      showToast("Error", "Could not fetch location coordinates", "error");
+      return { lat: null, lon: null };
+    }
+  };
+
+
   return { isLoading, handleCreatePost };
 }
+
+
+

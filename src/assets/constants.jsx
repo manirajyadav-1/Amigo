@@ -36,6 +36,7 @@ export const MapLogo = () => {
   </svg>
 }
 
+
 export const MessagesLogo = () => (
 	<svg
 		aria-label='Messenger'
