@@ -1,9 +1,9 @@
 import { Box, VStack, Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import Login from "./Login";
-import Signup from "./Signup";
-import GoogleAuth from "./GoogleAuth";
+import { useState, lazy, Suspense } from "react";
 
+const Login = lazy(() => import("./Login"));
+const Signup = lazy(() => import("./Signup"));
+const GoogleAuth = lazy(() => import("./GoogleAuth"));
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,24 +17,21 @@ const AuthForm = () => {
             <Text fontSize={"30px"} cursor={"pointer"} opacity={0.9} fontWeight={"bold"}>Amigo</Text>
           </Flex>
 
-          {isLogin ? <Login /> : <Signup />}
+          <Suspense fallback={<Text>Loading...</Text>}>
+            {isLogin ? <Login /> : <Signup />}
+          </Suspense>
 
           {/* ----- OR Text -----*/}
-          <Flex
-            alignItems={"center"}
-            justifyContent={"center"}
-            my={4}
-            gap={1}
-            w={"full"}
-          >
+          <Flex alignItems={"center"} justifyContent={"center"} my={4} gap={1} w={"full"}>
             <Box flex={2} h={"1px"} bg={"gray.400"} />
-            <Text mx={1} color={"black"}>
-              OR
-            </Text>
+            <Text mx={1} color={"black"}>OR</Text>
             <Box flex={2} h={"1px"} bg={"gray.400"} />
           </Flex>
 
-          <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"} />
+          {/* Lazy Load GoogleAuth */}
+          <Suspense fallback={<Text>Loading Google Auth...</Text>}>
+            <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"} />
+          </Suspense>
         </VStack>
       </Box>
 
