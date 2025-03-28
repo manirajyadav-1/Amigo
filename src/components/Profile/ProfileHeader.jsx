@@ -10,16 +10,14 @@ import {
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import EditProfile from "./EditProfile";
-//import useFollowUser from "../../hooks/useFollowUser";
+
 
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   const authUser = useAuthStore((state) => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  //const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid)
 
   const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
-	//const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
 
   return (
     <Flex
@@ -34,9 +32,9 @@ const ProfileHeader = () => {
         mx={"auto"}
       >
         <Avatar
-          name="As a programmer"
+          name="Avatar"
           src={userProfile.profilePicURL}
-          alt="As a programmer"
+          alt="Avatar"
         />
       </AvatarGroup>
       <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
@@ -63,20 +61,6 @@ const ProfileHeader = () => {
 							</Button>
 						</Flex>
 					)}
-					{/* {visitingAnotherProfileAndAuth && (
-						<Flex gap={4} alignItems={"center"} justifyContent={"center"}>
-							<Button
-								bg={"blue.500"}
-								color={"white"}
-								_hover={{ bg: "blue.600" }}
-								size={{ base: "xs", md: "sm" }}
-                onClick={handleFollowUser}
-                isLoading={isUpdating}
-							>
-								{isFollowing ? "Unfollow" : "Follow"}
-							</Button>
-						</Flex>
-					)} */}
         </Flex>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: "xs", md: "sm" }}>
