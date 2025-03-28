@@ -50,9 +50,6 @@ const MapFinder = () => {
                     <p><strong>Preferences:</strong> {post.preferences?.join(", ")}</p>
                     <p><strong>Posted:</strong> {new Date(post.createdAt).toLocaleString()}</p>
                     <p><strong>Price:</strong> {post.price || "N/A"}</p>
-                    <a href={`/post/${post.id}`} style={{ color: "blue", textDecoration: "underline" }}>
-                      View Details
-                    </a>
                   </Box>
                 </Popup>
               </Marker>
