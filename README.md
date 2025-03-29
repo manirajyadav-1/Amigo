@@ -9,6 +9,7 @@ A fully responsive web app that helps you find your next best roommate effortles
 React, Firebase, FireStore, Zustand
 
 ![Logo](https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg )
+
 ![Logo](https://www.vectorlogo.zone/logos/firebase/firebase-ar21.svg)
 
 ## Screenshots
@@ -16,9 +17,12 @@ React, Firebase, FireStore, Zustand
 
 ### Landing Page
 ![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743222539/Amigo/kfnapcwatbmyml7gnfab.png)
+<<<<<<< HEAD
 
 ### Landing Page
 ![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743164293/Amigo/kleoqwvvchb8wpmsgk5r.png)
+=======
+>>>>>>> bf028c8 (update readme)
 
 ### Auth Page
 ![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743164334/Amigo/fy6ztwqofbpkpx4divps.png)
