@@ -15,7 +15,7 @@ React, Firebase, FireStore, Zustand
 
 
 ### Landing Page
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743164293/Amigo/kleoqwvvchb8wpmsgk5r.png)
+![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743222539/Amigo/kfnapcwatbmyml7gnfab.png)
 
 ### Landing Page
 ![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743164293/Amigo/kleoqwvvchb8wpmsgk5r.png)
