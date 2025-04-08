@@ -76,7 +76,7 @@ const ProfilePost = ({ post }) => {
         alignItems={{ base: "center", md: "flex-start" }}
         p={4}
         borderRadius="lg"
-        bg="gray.800"
+        bg="gray.300"
         boxShadow="md"
       >
         <Image
@@ -142,11 +142,11 @@ const ProfilePost = ({ post }) => {
         size={{ base: "md", md: "lg" }}
       >
         <ModalOverlay />
-        <ModalContent bg="black" maxH="90vh" overflowY="auto">
+        <ModalContent bg="gray.200" maxH="90vh" overflowY="auto">
           <ModalCloseButton />
           <ModalBody pb={5}>
             <Flex direction="column" gap={4} w="full">
-              <Flex align="center" justify="space-between" wrap="wrap">
+              <Flex align="center" justify="space-normal" wrap="wrap">
                 <Text fontSize="lg" fontWeight="bold">
                   Received Requests
                 </Text>
