@@ -11,6 +11,7 @@ const LandingPage = () => {
           w="100vw"
           h="100vh"
           objectFit="cover"
+          loading="lazy" 
         />
         <Box
           position="absolute"
