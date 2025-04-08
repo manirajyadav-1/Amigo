@@ -4,31 +4,35 @@ import { useLocation } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/firebase";
 
-
 const PageLayout = ({ children }) => {
   const { pathname } = useLocation();
   const [user, loading] = useAuthState(auth);
-  const canRenderSidebar = pathname !== "/auth" && user;
-  const canRenderNavbar = !user && !loading && pathname !== "/auth";
 
-  const checkingUserIsAuth = !user && loading;
+  const isAuthPage = pathname === "/auth";
+  const showSidebar = !isAuthPage && user;
+  const showNavbarPlaceholder = !user && !loading && !isAuthPage;
 
-  if (checkingUserIsAuth) {
+  if (loading && !user) {
     return <PageLayoutSpinner />;
   }
+
   return (
-    <Flex flexDir={canRenderNavbar ? "column" : "row"}>
-      {/* Sidebar on the left*/}
-      {canRenderSidebar ? (
+    <Flex flexDir={showNavbarPlaceholder ? "column" : "row"}>
+      {/* Sidebar */}
+      {showSidebar && (
         <Box w={{ base: "70px", md: "240px" }}>
           <Sidebar />
         </Box>
-      ) : null}
-      {/* Page content on the left*/}
+      )}
+
+      {/* Page Content */}
       <Box
         flex={1}
-        w={{ base: "calc(100% - 70px", md: "calc(100% - 240px" }}
-        mx={"autof"}
+        w={{
+          base: showSidebar ? "calc(100% - 70px)" : "100%",
+          md: showSidebar ? "calc(100% - 240px)" : "100%",
+        }}
+        mx="auto"
       >
         {children}
       </Box>
@@ -38,15 +42,13 @@ const PageLayout = ({ children }) => {
 
 export default PageLayout;
 
-const PageLayoutSpinner = () => {
-  return (
-    <Flex
-      flexDir={"column"}
-      h={"100vh"}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
-      <Spinner size={"xl"} />
-    </Flex>
-  );
-};
+const PageLayoutSpinner = () => (
+  <Flex
+    flexDir="column"
+    h="100vh"
+    alignItems="center"
+    justifyContent="center"
+  >
+    <Spinner size="xl" />
+  </Flex>
+);

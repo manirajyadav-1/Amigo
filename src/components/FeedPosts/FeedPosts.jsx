@@ -11,11 +11,13 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import FeedPost from "./FeedPost";
+import { useState, useEffect, lazy, Suspense, useMemo } from "react";
 import useGetFeedPosts from "../../hooks/useGetFeedPosts";
 import useAuthStore from "../../store/authStore";
 import LocationDropdown from "../Sidebar/LocationDropdown";
+
+
+const FeedPost = lazy(() => import("./FeedPost"));
 
 const FeedPosts = () => {
   const { isLoading, posts } = useGetFeedPosts();
@@ -29,7 +31,9 @@ const FeedPosts = () => {
 
   const [filteredPosts, setFilteredPosts] = useState([]);
 
+ 
   useEffect(() => {
+    if (!authUser) return;
     setFilteredPosts(posts.filter(post => authUser.uid !== post.createdBy));
   }, [posts, authUser]);
 
@@ -43,6 +47,7 @@ const FeedPosts = () => {
       if (formData.price && post.price !== formData.price) return false;
       return true;
     });
+
     setFilteredPosts(newFilteredPosts);
     setFormData({ location: "", preference: "", price: "" });
   };
@@ -52,11 +57,20 @@ const FeedPosts = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const renderedPosts = useMemo(() => {
+    return filteredPosts.map((post) => (
+      <WrapItem key={post.id} w="300px">
+        <Suspense fallback={<Skeleton height="400px" w="100%" />}>
+          <FeedPost post={post} />
+        </Suspense>
+      </WrapItem>
+    ));
+  }, [filteredPosts]);
+
   return (
     <Container maxW="container.xl" py={10}>
       {/* Filters */}
       <Flex borderRadius={8} gap={2} justifyContent="center" alignItems="center" wrap="wrap">
-
         <LocationDropdown formValues={formData.location} handleChange={handleChange} />
 
         <Select placeholder="Preference" h="50px" border="1px solid gray" w={{ base: "full", md: "220px" }} name="preference" value={formData.preference} onChange={handleChange}>
@@ -84,7 +98,7 @@ const FeedPosts = () => {
 
       {/* Posts Grid */}
       {isLoading ? (
-        [0, 1, 2].map((_, idx) => (
+        Array.from({ length: 3 }).map((_, idx) => (
           <Flex key={idx} gap={4} alignItems="flex-start" mb={10}>
             <Flex gap="2">
               <SkeletonCircle size="10" />
@@ -100,11 +114,7 @@ const FeedPosts = () => {
         ))
       ) : filteredPosts.length > 0 ? (
         <Wrap spacing={6} justify="center" mt={6} align="stretch">
-          {filteredPosts.map((post) => (
-            <WrapItem key={post.id} w="300px">
-              <FeedPost post={post} />
-            </WrapItem>
-          ))}
+          {renderedPosts}
         </Wrap>
       ) : (
         <Text fontSize="md" color="red.400" my={18} textAlign="center">

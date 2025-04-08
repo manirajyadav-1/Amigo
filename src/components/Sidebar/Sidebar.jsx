@@ -25,20 +25,6 @@ const Sidebar = () => {
 						Amigo
 					</Flex>
 				</Link>
-				<Link
-					to={"/"}
-					as={RouterLink}
-					p={2}
-					display={{ base: "block", md: "none" }}
-					borderRadius={6}
-					_hover={{
-						bg: "whiteAlpha.200",
-					}}
-					w={12}
-					cursor='pointer'
-				>
-					<FaHome size={30} cursor={"pointer"}/>
-				</Link>
 				<Flex direction={"column"} gap={5} cursor={"pointer"}>
 					<SidebarItems />
 				</Flex>
