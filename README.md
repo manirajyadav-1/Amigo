@@ -14,24 +14,24 @@ React, Firebase, FireStore, Zustand
 ## Screenshots
 
 ### Landing Page
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743223297/Amigo/wzhhtrsjf2zguehhwa0e.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/landingpage.png)
 
 ### Auth Page
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743164334/Amigo/fy6ztwqofbpkpx4divps.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/auth.png)
 
 ### Home Section
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743155946/Amigo/ov5sy0gt53qjm3hbqdps.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/home.png)
 
 ### Map Navigation
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743155947/Amigo/cjqsa3c9tuzbwxvmtvov.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/map1.png)
 
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743163323/Amigo/zycsrblqurjldrrbiryx.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/map2.png)
 
 ### Search User
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743155946/Amigo/vb2d9shu28ll1ijrhrqr.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/search-user.png)
 
 ### Create Post
-![App Screenshot](https://res.cloudinary.com/ddavdy2aa/image/upload/v1743155946/Amigo/fp5ign3uui0nagpofxdu.png)
+![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/post.png)
 
 
 
