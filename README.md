@@ -11,7 +11,7 @@ React, Firebase, FireStore, Zustand
 ![Logo](https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg )
 ![Logo](https://www.vectorlogo.zone/logos/firebase/firebase-ar21.svg)
 
-## Screenshots
+## Output Screenshots
 
 ### Landing Page
 ![App Screenshot](https://github.com/manirajyadav-1/Amigo/blob/main/images/landingpage.png)
