@@ -1,7 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase";
+import useAuthStore from "./store/authStore"; 
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const AuthPage = lazy(() => import("./pages/AuthPage/AuthPage"));
@@ -12,6 +13,21 @@ const MapFinder = lazy(() => import("./components/Sidebar/MapFinder"));
 
 function App() {
   const [authUser] = useAuthState(auth);
+  const setUser = useAuthStore((state) => state.setUser); 
+
+  useEffect(() => {
+    if (authUser) {
+      const formattedUser = {
+        uid: authUser.uid,
+        displayName: authUser.displayName,
+        email: authUser.email,
+        photoURL: authUser.photoURL,
+      };
+      localStorage.setItem("userInfo", JSON.stringify(formattedUser)); 
+      setUser(formattedUser);
+    }
+  }, [authUser, setUser]);
+
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
