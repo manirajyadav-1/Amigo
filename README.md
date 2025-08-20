@@ -3,6 +3,10 @@
 
 A fully responsive web app that helps you find your next best roommate effortlessly. Authorized users can post listings and explore an interactive map powered by OpenStreetMap API to browse over 1000+ roommate postings. Built with Firebase Authentication for secure multi-method login, Firestore for real-time updates, and Zustand for efficient state management. 
 
+## Demo Login Credential
+Email: demo@gmail.com
+Password: demo123
+
 
 ## Tech Stack
 
